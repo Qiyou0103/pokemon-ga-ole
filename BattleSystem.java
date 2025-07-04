@@ -844,6 +844,89 @@ abstract class Pokemon implements Targetable {
     }
     
     // Stat modifications
-    public void boostAttack(int stages) {
-        double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
-        this.current
+public void boostAttack(int stages) {
+    double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+    this.currentAttack = (int) (this.baseAttack * multiplier);
+    this.attackStages = Math.max(-6, Math.min(6, this.attackStages + stages));
+}
+
+public void boostDefense(int stages) {
+    double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+    this.currentDefense = (int) (this.baseDefense * multiplier);
+    this.defenseStages = Math.max(-6, Math.min(6, this.defenseStages + stages));
+}
+
+public void boostSpeed(int stages) {
+    double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+    this.currentSpeed = (int) (this.baseSpeed * multiplier);
+    this.speedStages = Math.max(-6, Math.min(6, this.speedStages + stages));
+}
+
+public void boostSpecialAttack(int stages) {
+    double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+    this.currentSpecialAttack = (int) (this.baseSpecialAttack * multiplier);
+    this.specialAttackStages = Math.max(-6, Math.min(6, this.specialAttackStages + stages));
+}
+
+public void boostSpecialDefense(int stages) {
+    double multiplier = Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+    this.currentSpecialDefense = (int) (this.baseSpecialDefense * multiplier);
+    this.specialDefenseStages = Math.max(-6, Math.min(6, this.specialDefenseStages + stages));
+}
+
+public void boostAccuracy(int stages) {
+    this.accuracyStages = Math.max(-6, Math.min(6, this.accuracyStages + stages));
+}
+
+public void boostEvasion(int stages) {
+    this.evasionStages = Math.max(-6, Math.min(6, this.evasionStages + stages));
+}
+
+// Reset all stat modifications
+public void resetStatModifications() {
+    this.currentAttack = this.baseAttack;
+    this.currentDefense = this.baseDefense;
+    this.currentSpeed = this.baseSpeed;
+    this.currentSpecialAttack = this.baseSpecialAttack;
+    this.currentSpecialDefense = this.baseSpecialDefense;
+    
+    this.attackStages = 0;
+    this.defenseStages = 0;
+    this.speedStages = 0;
+    this.specialAttackStages = 0;
+    this.specialDefenseStages = 0;
+    this.accuracyStages = 0;
+    this.evasionStages = 0;
+}
+
+// Get current stat multiplier for a given stage
+public double getStatMultiplier(int stages) {
+    return Math.pow(1.5, Math.max(-6, Math.min(6, stages)));
+}
+
+// Get accuracy multiplier (different formula than stats)
+public double getAccuracyMultiplier() {
+    if (accuracyStages >= 0) {
+        return (3.0 + accuracyStages) / 3.0;
+    } else {
+        return 3.0 / (3.0 + Math.abs(accuracyStages));
+    }
+}
+
+// Get evasion multiplier (different formula than stats)
+public double getEvasionMultiplier() {
+    if (evasionStages >= 0) {
+        return (3.0 + evasionStages) / 3.0;
+    } else {
+        return 3.0 / (3.0 + Math.abs(evasionStages));
+    }
+}
+
+// Apply all current stat modifications
+public void applyStatModifications() {
+    this.currentAttack = (int) (this.baseAttack * getStatMultiplier(this.attackStages));
+    this.currentDefense = (int) (this.baseDefense * getStatMultiplier(this.defenseStages));
+    this.currentSpeed = (int) (this.baseSpeed * getStatMultiplier(this.speedStages));
+    this.currentSpecialAttack = (int) (this.baseSpecialAttack * getStatMultiplier(this.specialAttackStages));
+    this.currentSpecialDefense = (int) (this.baseSpecialDefense * getStatMultiplier(this.specialDefenseStages));
+}
