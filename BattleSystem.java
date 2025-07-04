@@ -764,14 +764,21 @@ class Move {
     
     // Getters
     public String getName() { return name; }
-    public MoveType getType() { return type; }
-    public int getPower() { return power; }
-    public int getAccuracy() { return accuracy; }
-    public int getPP() { return pp; }
-    public int getCurrentPP() { return currentPP; }
-    public String getDescription() { return description; }
-    public StatusEffect getStatusEffect() { return statusEffect; }
-    public int getStatusChance() { return statusChance; }
+    public PokemonType getType() { return type; }
+    public int getMaxHp() { return maxHp; }
+    public int getCurrentHp() { return currentHp; }
+    public int getBaseAttack() { return baseAttack; }
+    public int getCurrentAttack() { return currentAttack; }
+    public int getBaseDefense() { return baseDefense; }
+    public int getCurrentDefense() { return currentDefense; }
+    public int getBaseSpeed() { return baseSpeed; }
+    public int getCurrentSpeed() { return currentSpeed; }
+    public int getBaseSpecialAttack() { return baseSpecialAttack; }
+    public int getCurrentSpecialAttack() { return currentSpecialAttack; }
+    public int getBaseSpecialDefense() { return baseSpecialDefense; }
+    public int getCurrentSpecialDefense() { return currentSpecialDefense; }
+    public int getLevel() { return level; }
+    public boolean isDefeated() { return isDefeated; }
 }
 
 // ================= ENHANCED POKEMON =================
@@ -782,9 +789,13 @@ abstract class Pokemon implements Targetable {
     protected int currentHp;
     protected int baseAttack;
     protected int baseDefense;
+    protected int baseSpecialAttack;
+    protected int baseSpecialDefense;
     protected int baseSpeed;
     protected int currentAttack;
     protected int currentDefense;
+    protected int currentSpecialAttack;
+    protected int currentSpecialDefense;
     protected int currentSpeed;
     protected int level;
     protected Move[] moves;
@@ -792,6 +803,15 @@ abstract class Pokemon implements Targetable {
     protected int statusTurns;
     protected int criticalHitStage;
     protected boolean isDefeated;
+
+    // Stat stage counters (-6 to +6)
+    protected int attackStages;
+    protected int defenseStages;
+    protected int specialAttackStages;
+    protected int specialDefenseStages;
+    protected int speedStages;
+    protected int accuracyStages;
+    protected int evasionStages;
     
     public Pokemon(String name, PokemonType type, int maxHp, int attack, int defense, int speed, int level) {
         this.name = name;
@@ -800,9 +820,13 @@ abstract class Pokemon implements Targetable {
         this.currentHp = maxHp;
         this.baseAttack = attack;
         this.baseDefense = defense;
+        this.baseSpecialAttack = specialAttack;
+        this.baseSpecialDefense = specialDefense;
         this.baseSpeed = speed;
         this.currentAttack = attack;
         this.currentDefense = defense;
+        this.currentSpecialAttack = specialAttack;
+        this.currentSpecialDefense = specialDefense;
         this.currentSpeed = speed;
         this.level = level;
         this.moves = new Move[4];
