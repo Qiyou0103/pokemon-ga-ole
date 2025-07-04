@@ -1,6 +1,8 @@
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 // ================= CORE ENUMS =================
 enum PokemonType {
