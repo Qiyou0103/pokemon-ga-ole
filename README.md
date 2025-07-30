@@ -11,8 +11,7 @@ Feel free to use, modify, and contribute to this project.
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+
 
 
 ![uml diagram](UMLDiagramPokemonGaOle.png)
