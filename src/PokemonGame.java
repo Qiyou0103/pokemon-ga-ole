@@ -356,6 +356,11 @@ public class PokemonGame {
         );
         battle.startBattle();
 
+        if (battle.hasFled()) {
+            System.out.println("Returning to the main menu...");
+            return coins;
+        }
+
         // Post-battle logic
         if (battle.isPlayerVictorious()) {
             int battleScore = battle.getBattleScore();

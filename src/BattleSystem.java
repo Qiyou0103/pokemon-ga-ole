@@ -19,6 +19,7 @@ public class BattleSystem {
    private final Scanner scanner;
    private Pokemon playerActivePokemon;
    private Player player;
+   private boolean fled = false;
 
    public BattleSystem(List<Pokemon> var1, List<Pokemon> var2, Scanner scanner, Player player) {
       this.scanner = scanner;
@@ -218,6 +219,7 @@ public class BattleSystem {
       } else {
          System.out.println("You attempt to flee from battle!");
          this.battleEnded = true;
+         this.fled = true;
          this.rushComboCount = 0;
       }
    }
@@ -407,6 +409,10 @@ public class BattleSystem {
 
    public boolean isPlayerVictorious() {
       return this.playerVictorious;
+   }
+
+   public boolean hasFled() {
+      return this.fled;
    }
 
    private String getHpBar(Pokemon pokemon) {
