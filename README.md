@@ -12,7 +12,7 @@ Feel free to use, modify, and contribute to this project.
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 
-![Pokemon Gao Le Demo](pokemongaoledemo.mp4)
+![Pokemon Ga Ole Demo](pokemongaole.mp4)
 
 ![uml diagram](UMLDiagramPokemonGaOle.png)
 
