@@ -14,7 +14,7 @@ public class GameManager {
             private void selectUser() {        
                 while (true) {            
                     System.out.println("\n====== SELECT USER ======");            
-                    File dataDir = new File("data");            
+                    File dataDir = new File("src");            
                     File[] saveFiles = dataDir.listFiles((dir, name) -> name.endsWith(".data"));            
                     List<String> playerNames = new ArrayList<>();            
                     if (saveFiles != null) {                
