@@ -74,31 +74,48 @@ public class GameManager {
                         System.out.print("Choose an option: ");            
                         int choice = PokemonGame.getIntInput(1, 8, scanner);            
                         switch (choice) {                
-                            case 1 -> {                    
+                            case 1:                    
                                 int updatedCoins = PokemonGame.battleAndCatchMode(player, scanner, coins, this);                    
                                 this.coins = updatedCoins;                
-                            }                
-                            case 2 -> PokemonGame.viewParty(player);                
-                            case 3 -> PokemonGame.managePokemon(player, scanner);                
-                            case 4 -> displayTopScores();                
-                            case 5 -> saveGame(player.getName() + ".data");                
-                            case 6 -> discMachine();                
-                            case 7 -> selectUser();                
-                            case 8 -> {                    
+                                break;                
+                            case 2: 
+                                PokemonGame.viewParty(player);
+                                break;                
+                            case 3: 
+                                PokemonGame.managePokemon(player, scanner);
+                                break;                
+                            case 4: 
+                                displayTopScores();
+                                break;                
+                            case 5: 
+                                saveGame(player.getName() + ".data");
+                                break;                
+                            case 6: 
+                                discMachine();
+                                break;                
+                            case 7: 
+                                selectUser();
+                                break;                
+                            case 8:                    
                                 System.out.println("Thanks for playing!");                    
                                 return;                
-                            }            
                         }        
                     }    
                 }    
                 private void saveGame(String filename) {        
                     System.out.println("\n--- Saving Game Data ---");        
                     System.out.println("Inserting Trainer Card into the slot...");        
-                    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/" + filename))) {            
-                        GameData data = new GameData(player, coins, currentLocation);            
-                        oos.writeObject(data);            
-                        System.out.println("Trainer Card data saved successfully!");        
-                    }        catch (IOException e) {            
+                    try {            
+                        File dataDir = new File("data");            
+                        if (!dataDir.exists()) {                
+                            dataDir.mkdirs();            
+                        }            
+                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/" + filename))) {                
+                            GameData data = new GameData(player, coins, currentLocation);                
+                            oos.writeObject(data);                
+                            System.out.println("Trainer Card data saved successfully!");            
+                        }        
+                    } catch (IOException e) {            
                         System.out.println("Error saving game: " + e.getMessage());            
                         e.printStackTrace();        
                     }    
