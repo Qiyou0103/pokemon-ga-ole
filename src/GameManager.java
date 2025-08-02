@@ -5,8 +5,7 @@ public class GameManager {
     private String currentLocation;    
     private int coins;    
     private final Scanner scanner;    
-    private static final String SAVE_DIR = System.getProperty("user.home") + File.separator + ".pokemon-ga-ole";
-    private static final String SCORES_FILE = SAVE_DIR + File.separator + "scores.txt";    
+    private static final String SCORES_FILE = "data" + File.separator + "scores.txt";    
     public GameManager(Scanner scanner) {        
         this.scanner = scanner;    }    
         public void startGame() {        
@@ -15,7 +14,7 @@ public class GameManager {
             private void selectUser() {        
                 while (true) {            
                     System.out.println("\n====== SELECT USER ======");            
-                    File dataDir = new File(SAVE_DIR);            
+                    File dataDir = new File("data");            
                     File[] saveFiles = dataDir.listFiles((dir, name) -> name.endsWith(".data"));            
                     List<String> playerNames = new ArrayList<>();            
                     if (saveFiles != null) {                
@@ -107,12 +106,12 @@ public class GameManager {
                     System.out.println("\n--- Saving Game Data ---");        
                     System.out.println("Inserting Trainer Card into the slot...");        
                     try {            
-                        File dataDir = new File(SAVE_DIR);
+                        File dataDir = new File("data");
             
                         if (!dataDir.exists()) {                
                             dataDir.mkdirs();            
                         }            
-                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_DIR + File.separator + filename))) {                
+                        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data" + File.separator + filename))) {                
                             GameData data = new GameData(player, coins, currentLocation);                
                             oos.writeObject(data);                
                             System.out.println("Trainer Card data saved successfully!");            
@@ -125,7 +124,7 @@ public class GameManager {
                 private boolean loadGame(String filename) {        
                     System.out.println("\n--- Loading Game Data ---");
                     System.out.println("Reading data from Trainer Card...");        
-                    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_DIR + File.separator + filename))) {            
+                    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data" + File.separator + filename))) {            
                         GameData data = (GameData) ois.readObject();            
                         this.player = data.player;            
                         this.coins = data.coins;            
