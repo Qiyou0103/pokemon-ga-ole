@@ -5,7 +5,7 @@ public class GameManager {
     private String currentLocation;    
     private int coins;    
     private final Scanner scanner;    
-    private static final String SCORES_FILE = "data" + File.separator + "scores.txt";    
+    private static final String SCORES_FILE = "src" + File.separator + "scores.txt";    
     public GameManager(Scanner scanner) {        
         this.scanner = scanner;    }    
         public void startGame() {        
