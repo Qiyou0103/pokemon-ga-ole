@@ -12,7 +12,9 @@ Feel free to use, modify, and contribute to this project.
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 
-- [Pokémon Ga Ole Demo](https://youtu.be/rWL1y9Yw2tk)
+- [Pokémon Ga Ole Demo 16:9](https://youtu.be/rWL1y9Yw2tk)
+- [Pokémon Ga Ole Demo 9:16](https://youtube.com/shorts/gHtVsjKsk_E)
+
 
 ![uml diagram](UMLDiagramPokemonGaOle.png)
 
