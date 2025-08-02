@@ -8,7 +8,18 @@ public class GameManager {
     private static final String SCORES_FILE = "src" + File.separator + "scores.txt";
     private static final String DATA_DIR = "src";    
     public GameManager(Scanner scanner) {        
-        this.scanner = scanner;    }    
+        this.scanner = scanner;
+        
+        // Check if src directory exists
+        File srcDir = new File(DATA_DIR);
+        if (!srcDir.exists()) {
+            System.out.println("ERROR: 'src' directory not found!");
+            System.out.println("Please make sure you are running the game from the project root directory.");
+            System.out.println("The 'src' folder should be in the same directory as where you run the game.");
+            System.out.println("Current working directory: " + System.getProperty("user.dir"));
+            System.exit(1);
+        }
+    }    
         public void startGame() {        
             selectUser();        
             mainMenu();    }    
