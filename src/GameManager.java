@@ -11,11 +11,11 @@ public class GameManager {
         public void startGame() {        
             selectUser();        
             mainMenu();    }    
-            private void selectUser() {        
-                while (true) {            
-                    System.out.println("\n====== SELECT USER ======");            
-                    File dataDir = new File("src");            
-                    File[] saveFiles = dataDir.listFiles((dir, name) -> name.endsWith(".data"));            
+                private void selectUser() {        
+        while (true) {            
+            System.out.println("\n====== SELECT USER ======");            
+            File dataDir = new File("data");            
+            File[] saveFiles = dataDir.listFiles((dir, name) -> name.endsWith(".data"));            
                     List<String> playerNames = new ArrayList<>();            
                     if (saveFiles != null) {                
                         for (File file : saveFiles) {                    
