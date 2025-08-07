@@ -442,7 +442,6 @@ public class BattleSystem {
          case 2:
             System.out.println(playerPokemon.getName() + "'s attack is boosted for this turn!");
             // This boost would ideally be applied before damage calculation in attackSequence
-            // For simplicity, we'll just print a message for now.
             break;
       }
    }

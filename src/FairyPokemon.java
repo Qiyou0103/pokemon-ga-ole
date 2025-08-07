@@ -3,7 +3,6 @@ import java.io.Serializable;
 public class FairyPokemon extends Pokemon implements Serializable {
     private static final long serialVersionUID = 1L;
     public FairyPokemon() {
-        // No-argument constructor for serialization
     }
 
     public FairyPokemon(String name, int level, double baseCatchRate,int baseHp, int baseAttack, int baseDefense, int baseSpeed) {
@@ -17,6 +16,6 @@ public class FairyPokemon extends Pokemon implements Serializable {
     @Override
     public void useSpecialAbility(Pokemon opponent) {
         System.out.println(getName() + " uses Moonblast on " + opponent.getName() + "!");
-        // Add damage calculation logic here if needed
+        
     }
 }

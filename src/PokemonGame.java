@@ -84,8 +84,6 @@ public class PokemonGame {
         return random;
     }
 
-    // Removed methods: selectUser, initializeGame, mainMenu, saveGame, loadGame, displayTopScores, discMachine
-    // These are now in GameManager.java
 
     public static int getIntInput(int min, int max, Scanner scanner) {
         if (System.console() == null) {

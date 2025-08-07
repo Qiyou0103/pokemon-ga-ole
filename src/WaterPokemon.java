@@ -17,6 +17,6 @@ public class WaterPokemon extends Pokemon implements Serializable {
     @Override
     public void useSpecialAbility(Pokemon opponent) {
         System.out.println(getName() + " uses Hydro Pump on " + opponent.getName() + "!");
-        // Add damage calculation logic here if needed
+        
     }
 }
